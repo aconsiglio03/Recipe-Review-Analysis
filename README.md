@@ -49,3 +49,13 @@ Here is a histogram detailing the distributions of ratings in our dataframe. As 
 
 <br>
 Here we attempted to establish a relationship between the healthiness and the minutes required for our recipes and the ratings associated with them. We initially believed that people would rate recipes with higher Saturated Fat contents higher because people generally enjoy the tastes of unhealthier foods. However, this boxplot shows little difference between the average Saturated Fat in each rating category. The same goes for minutes, although it does seem like higher ratings are usually from slightly faster recipes (35 minute medians for 4 and 5 stars, 40 minutes for all other categories).
+
+
+<br>
+
+### Hypothesis Testing
+
+$H_{0}$: All recipe ratings regardless of the recipe's tags are part of the same rating distribution.
+$H_{0}$: Recipes marked easy (have the tag '3-steps-or-less', 'easy', or 'beginner-cook')
+<br>
+We created an easy df with an extra column determining whether or not these tags exist in a recipe's tags. 0.58 recipes were classified as 'easy', a good divide to test on. We then permuted the 'easy' column 3000 times, and observed whether the means were more extreme than 0.01, the difference in mean ratings. Through our test, we got a p-value of 0.01, showing that recipes with easy tags have a higher distribution of ratings.
