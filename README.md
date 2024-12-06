@@ -55,7 +55,7 @@ Here we attempted to establish a relationship between the healthiness and the mi
 
 ### Hypothesis Testing
 
-$H_{0}$: All recipe ratings regardless of the recipe's tags are part of the same rating distribution.
-$H_{0}$: Recipes marked easy (have the tag '3-steps-or-less', 'easy', or 'beginner-cook')
+$H_{0}$: All recipe ratings regardless of the recipe's tags are part of the same rating distribution.\
+$H_{1}$: Recipes marked easy (have the tag '3-steps-or-less', 'easy', or 'beginner-cook')
 <br>
-We created an easy df with an extra column determining whether or not these tags exist in a recipe's tags. 0.58 recipes were classified as 'easy', a good divide to test on. We then permuted the 'easy' column 3000 times, and observed whether the means were more extreme than 0.01, the difference in mean ratings. Through our test, we got a p-value of 0.01, showing that recipes with easy tags have a higher distribution of ratings.
+We created an easy df with an extra column determining whether or not these tags exist in a recipe's tags. 0.58 recipes were classified as 'easy', a good divide to test on. We then permuted the 'easy' column 5000 times, and observed whether the means were more extreme than 0.01, the difference in mean ratings. Through our test, we got a p-value of 0.0004, showing that recipes with easy tags have a higher distribution of ratings.
