@@ -58,12 +58,14 @@ Here we attempted to establish a relationship between the healthiness and the mi
 
 One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because... Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
 
-![desc](https://github.com/user-attachments/assets/9de045a8-d894-469f-897b-649b2f36e475)
-![descnot](https://github.com/user-attachments/assets/8708678b-9131-4144-9068-a1fe78e3c44a)
+![desc](https://github.com/user-attachments/assets/0bf2470f-7aa2-45ef-83a7-453779f37c86)
+
+
+![descnot](https://github.com/user-attachments/assets/e60ed7b5-2892-4b9d-b84e-3bf6bf2c1836)
 
 
 <br><br>
-To check if 'Discription' was MAR on 'Rating' we performed a permutation test that iterated 3000 times. We got a significantly low p value when using the absolute difference of means of 0.013
+To check if 'Description' was MAR on 'Rating' we performed a permutation test that iterated 3000 times. We got a significantly low p value when using the absolute difference of means of 0.013
 
 
 
