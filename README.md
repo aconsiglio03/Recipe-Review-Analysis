@@ -65,8 +65,7 @@ One column we know to be NMAR is 'Rating'. This is because we were advised to re
 
 
 <br><br>
-To check if 'Description' was MAR on 'Rating' we performed a permutation test that iterated 3000 times. We got a significantly low p value when using the absolute difference of means of 0.013
-
+To check if 'Description' was MAR on 'Rating' we performed a permutation test that iterated 3000 times. We got a significantly low p value when using the absolute difference of means of 0.013. We see this significant difference in the histograms of 'Rating' when 'Description' is missing or not missing. We found 'Description' to not be MAR on 'Number of Steps', i.e., 'Number of Steps' had no effect on the missingness of the 'Description' column. For that permutation test we got a p value of 0.21.
 
 
 <br>
