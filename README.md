@@ -51,16 +51,19 @@ Here is a histogram detailing the distributions of ratings in our dataframe. As 
 Here we attempted to establish a relationship between the healthiness and the minutes required for our recipes and the ratings associated with them. We initially believed that people would rate recipes with higher Saturated Fat contents higher because people generally enjoy the tastes of unhealthier foods. However, this boxplot shows little difference between the average Saturated Fat in each rating category. The same goes for minutes, although it does seem like higher ratings are usually from slightly faster recipes (35 minute medians for 4 and 5 stars, 40 minutes for all other categories).
 
 
-<br>
+<br><br><br><br>
+
 
 ### Missingness Analysis
 
 One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because... Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
 
+![desc](https://github.com/user-attachments/assets/9de045a8-d894-469f-897b-649b2f36e475)
+![descnot](https://github.com/user-attachments/assets/8708678b-9131-4144-9068-a1fe78e3c44a)
 
-![missing](https://github.com/user-attachments/assets/03ff65bb-593c-4a3e-9574-b5cb7931a3b3)
-![notmissing](https://github.com/user-attachments/assets/30803403-6503-4b61-8e6b-abf4fc2c44ad)
 
+<br><br>
+To check if 'Discription' was MAR on 'Rating' we performed a permutation test that iterated 3000 times. We got a significantly low p value when using the absolute difference of means of 0.013
 
 
 
