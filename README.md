@@ -58,6 +58,10 @@ Here we attempted to establish a relationship between the healthiness and the mi
 One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because... Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
 
 
+![missing](https://github.com/user-attachments/assets/03ff65bb-593c-4a3e-9574-b5cb7931a3b3)
+![notmissing](https://github.com/user-attachments/assets/30803403-6503-4b61-8e6b-abf4fc2c44ad)
+
+
 
 
 <br>
