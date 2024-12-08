@@ -53,6 +53,15 @@ Here we attempted to establish a relationship between the healthiness and the mi
 
 <br>
 
+### Missingness Analysis
+
+One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because... Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
+
+
+
+
+<br>
+
 ### Hypothesis Testing
 
 $H_{0}$: All recipe ratings regardless of the recipe's tags are part of the same rating distribution.\
