@@ -6,7 +6,7 @@ Final project for DSC 80, regarding doing meaningful analysis on a dataset conta
 Our datasets consist of 2 csv files. The first is RAW_interactions.csv, which contains a user ID, recipe ID, and then the review and rating a user left. The other is RAW_recipes.csv, which gives us information about the recipes themselves. This includes the tags on the recipe, number of steps, nutrition facts, etc. The one question our project centers around is "Do unhealthier recipes have higher ratings and can we predict the rating a user gives a recipe based on the variables in our dataframe?" This question is interesting because it gives some insight into why people enjoy certain recipes more than others. Is it simply that certain recipes just taste better, or could it be the work that goes into making a meal and whether people naturally enjoy unhealthier recipes? By creating a model and identifying the most significant variables, we can see what types of recipes people naturally gravitate towards.<br><br><br><br>
 
 ### Cleaning Process
-First, we began by loading in the 2 datasets and following the processes outlined in the write-up. We merged recipes and reviews by keeping recipes and merging on the recipe ID. We filled in ratings of 0 with np.nan because ... We then converted the date reviews were left to datetime to make it easier if we wanted to utilize this column later in the project. We then converted our discrete variables to integers, like number of minutes, number of steps, etc. The most modification we did was extracting the daily value nutritional facts for each macronutrient. We extracted the saturated fat, calories, sugar, etc. to become their own columns and converted their values to integers.
+First, we began by loading in the 2 datasets and following the processes outlined in the write-up. We merged recipes and reviews by keeping recipes and merging on the recipe ID. We filled in ratings of 0 with np.nan because we believe that these are responses where people didn't leave a rating. We then converted the date reviews were left to datetime to make it easier if we wanted to utilize this column later in the project. We then converted our discrete variables to integers, like number of minutes, number of steps, etc. The most modification we did was extracting the daily value nutritional facts for each macronutrient. We extracted the saturated fat, calories, sugar, etc. to become their own columns and converted their values to integers.
 
 #### DataFrame Head
 
@@ -58,7 +58,9 @@ Here we attempted to establish a relationship between the healthiness and the mi
 
 ### Assessment of Missingness
 
-One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because... Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
+One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because they result from someone not leaving a rating. Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
+
+#### Analysis on 'Description'
 
 ![desc](https://github.com/user-attachments/assets/0bf2470f-7aa2-45ef-83a7-453779f37c86)
 
