@@ -114,18 +114,19 @@ For our model we wanted to predict the 'rating' column of our data because we th
 <br><br>
 
 ### Baseline Model
-
+Before we were able to fit our baseline we needed to turn our average ratings columns into discrete categories. So we rounded each average and then converted the data type to integer. Because we wanted a multiclass classification we decided on a random forest, with the hyperparameters of Maximum Tree Depth( the number of splits that will be performed) and number of estimators(number of decision trees that make the random forest). For our initial test we decided to just use all the numerical columns, which included number of steps, number of ingredients, and all of the nutritional information. We performed a grid-search for our model from 50, 100, 150 number of estimators and 3, 5, and 15 max depth scoring on balanced accuracy with k-folds of five. With this we achieved an test accuracy of 21%, indicating that our model performed far worse than a constant prediction of five.
 
 <br><br>
 
 ### Final Model
 
+To improve upon our model we decided to incorporate one-hot-encoded features based on the hypothesis tests we had noticed earlier. We noticed that Sugar_dv didn't improve predictions but we had found that "Low Sugar" recipes scored significantly higher ratings on average. So we created a "High Sugar" column and had our pipeline one-hot-encode it. We employed this same method with calories, creating a "High Calorie" column. Furthermore, we noticed that the spread of contributors on the site was highly skewed. We noticed that most recipes were uploaded by a few contributors, so we decided to classify the contributors within the the top 25% of contributors by volume as "top contributors". Then we one-hot-encoded this column as well. Finally, we decided that we could use tags to help determine ratings. Similarly, we calculated the distribution of tags in relation to their appearances, and identified the "most popular tags" ie the top 5%. Then we one-hot-encoded a column for each of these top tags. When we initially ran our new model, same gridsearch but with new features, we achieved only marginally better test accuracy. However, upon changing our scoring metric to accuracy, our test accuracy improved massively. After a few iterations we landed on 69% test accuracy. We found our optimized model at 350 estimators with a max depth of 30.  Ultimately with the inclusion of new features and a change in our scoring metric we observed in increase in test accuracy of 48%.
 
 <br><br>
 
 ### Fairness Model
 
-Because our model regards recipes and ratings, it wasn't immediately apparent what groups we would analyze to ensure fairness. Thinking more in depth, we realized that we should take into account whether our model is assessing certain ethnic foods differently than the rest of the data. We took a few subsets of data for recipes that contained "chinese", "african", "indian", etc. to test our model on.
+To evaluate the fairness of our model we wanted to see if our model would predict the ratings of sensitive groups differently than that of non-sensitive groups. We identified that ethnic food would be a sensitive group as it would be a major concern if our model was predicting ratings on the lines of ethnicity. To investigate this question we split our dataset into two groups, ethnic and nonethnic food. For our purposes, we used the minimum categories of ethnicity, excluding "American Indian" due to a lack of data. We decided that non-ethnic would be constituted that by cultural cuisines that would fall under caucasian as food considered "typical" to most Americans would be that of western cultures. Then we aggregated all recipes of Latinx, Asian, African, and Pacific-Islander background into our ethnic food. From their we labeled them and found the average score based on those groups and calculated the difference in group means. Upon conduction a permutation test, where we shuffled the ethnic/non-ethnic labels, we determined that there was no significant difference in average ratings of non-ethnic and ethnic food with a p-value of 0.5520.
 
 
 
