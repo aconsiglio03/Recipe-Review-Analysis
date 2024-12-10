@@ -75,12 +75,39 @@ To check if 'Description' was MAR on 'Rating' we performed a permutation test th
 ### Hypothesis Testing
 
 $H_{0}$: All recipe ratings regardless of the recipe's tags are part of the same rating distribution.\
-$H_{1}$: Recipes marked easy (have the tag '3-steps-or-less', 'easy', or 'beginner-cook')
+$H_{1}$: Recipes marked easy (have the tag '3-steps-or-less', 'easy', or 'beginner-cook') have a higher rating distribution.
 <br>
 We created an easy df with an extra column determining whether or not these tags exist in a recipe's tags. 0.58 recipes were classified as 'easy', a good divide to test on. We then permuted the 'easy' column 5000 times, and observed whether the means were more extreme than 0.01, the difference in mean ratings. Through our test, we got a p-value of 0.0004, so we reject our null hypothesis and instead hypothesize that recipes with tags referring to their easiness have a higher distribution of ratings.
 
+<br>
+We also did a hypothesis test on Low vs High sugar recipes (cutoff at 20% of daily value).
+
+$H_{0}$: All recipe ratings regardless of the sugar are part of the same rating distribution.\
+$H_{1}$: Recipes with lower sugar (<20% of daily value) have a higher rating distribution.
 <br><br>
+We created a sugar df with a column for low sugar (marked by our cutoff) and performed  5000 iterations of our hypothesis test, and found a p value of 0.0002. This is a very significant value, and allows us to reject the null hypothesis. This suggests that recipes with sugar DV <20% have a higher rating distribution in our dataset.
+
+![lowsug](https://github.com/user-attachments/assets/706007a5-9538-472a-af6d-531e7123c511)
+![highsug](https://github.com/user-attachments/assets/92459cd0-8802-4182-bfc8-cd869bec9af8)
+
+
 
 ### Framing a Prediction Problem
 
 For our model we wanted to predict the 'rating' column of our data because we thought it was the most interesting variable. It tells you very simply and clearly whether or not people enjoyed the recipe and if they would recommend it to others. Because we need to build a model that takes into consideration the data we would have at the time, we only utilized variables given in the original recipe, nothing from a user's review. If we're able to create a successful model that uses attributes of a recipe, we're able to get some insight as to what makes a good recipe, and why people may be drawn to specific kinds of recipes. Since we're only using information from the recipes, we grouped each unique recipe and created a column 'avg_rating' which states the mean rating of each recipe. We then rounded the means to the nearest whole number, because we believed we'd have better luck creating a **classifier** model rather than a regression model. Because ratings have 5 'classes' (1-5 stars), this is a **multiclass** classification.
+
+<br><br>
+
+### Baseline Model
+
+
+<br><br>
+
+### Final Model
+
+
+<br><br>
+
+### Fairness Model
+
+Because our model regards recipes and ratings, it wasn't immediately apparent what groups we would analyze to ensure fairness. Thinking more in depth, we realized that we should take into account whether our model is assessing certain ethnic foods differently than the rest of the data. We took a few subsets of data for recipes that contained "chinese", "african", "indian", etc. to test our model on.
