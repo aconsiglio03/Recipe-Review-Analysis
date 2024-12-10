@@ -1,6 +1,8 @@
 # Recipe-Review-Analysis
 Final project for DSC 80, regarding doing meaningful analysis on a dataset containing recipes and the reviews associated with them.
 
+
+### Introduction
 Our datasets consist of 2 csv files. The first is RAW_interactions.csv, which contains a user ID, recipe ID, and then the review and rating a user left. The other is RAW_recipes.csv, which gives us information about the recipes themselves. This includes the tags on the recipe, number of steps, nutrition facts, etc. The one question our project centers around is "Do unhealthier recipes have higher ratings and can we predict the rating a user gives a recipe based on the variables in our dataframe?" This question is interesting because it gives some insight into why people enjoy certain recipes more than others. Is it simply that certain recipes just taste better, or could it be the work that goes into making a meal and whether people naturally enjoy unhealthier recipes? By creating a model and identifying the most significant variables, we can see what types of recipes people naturally gravitate towards.<br><br><br><br>
 
 ### Cleaning Process
@@ -54,7 +56,7 @@ Here we attempted to establish a relationship between the healthiness and the mi
 <br><br><br><br>
 
 
-### Missingness Analysis
+### Assessment of Missingness
 
 One column we know to be NMAR is 'Rating'. This is because we were advised to replace ratings of 0 starts with np.nan during our cleaning process because... Therefore, 'Rating' is missing dependent on the value of the rating itself, making it NMAR.
 
@@ -75,4 +77,10 @@ To check if 'Description' was MAR on 'Rating' we performed a permutation test th
 $H_{0}$: All recipe ratings regardless of the recipe's tags are part of the same rating distribution.\
 $H_{1}$: Recipes marked easy (have the tag '3-steps-or-less', 'easy', or 'beginner-cook')
 <br>
-We created an easy df with an extra column determining whether or not these tags exist in a recipe's tags. 0.58 recipes were classified as 'easy', a good divide to test on. We then permuted the 'easy' column 5000 times, and observed whether the means were more extreme than 0.01, the difference in mean ratings. Through our test, we got a p-value of 0.0004, showing that recipes with easy tags have a higher distribution of ratings.
+We created an easy df with an extra column determining whether or not these tags exist in a recipe's tags. 0.58 recipes were classified as 'easy', a good divide to test on. We then permuted the 'easy' column 5000 times, and observed whether the means were more extreme than 0.01, the difference in mean ratings. Through our test, we got a p-value of 0.0004, so we reject our null hypothesis and instead hypothesize that recipes with tags referring to their easiness have a higher distribution of ratings.
+
+<br><br>
+
+### Framing a Prediction Problem
+
+For our model we wanted to predict the 'rating' column of our data because we thought it was the most interesting variable. It tells you very simply and clearly whether or not people enjoyed the recipe and if they would recommend it to others. Because we need to build a model that takes into consideration the data we would have at the time, we only utilized variables given in the original recipe, nothing from a user's review. If we're able to create a successful model that uses attributes of a recipe, we're able to get some insight as to what makes a good recipe, and why people may be drawn to specific kinds of recipes. Since we're only using information from the recipes, we grouped each unique recipe and created a column 'avg_rating' which states the mean rating of each recipe. We then rounded the means to the nearest whole number, because we believed we'd have better luck creating a **classifier** model rather than a regression model. Because ratings have 5 'classes' (1-5 stars), this is a **multiclass** classification.
