@@ -126,3 +126,12 @@ For our model we wanted to predict the 'rating' column of our data because we th
 ### Fairness Model
 
 Because our model regards recipes and ratings, it wasn't immediately apparent what groups we would analyze to ensure fairness. Thinking more in depth, we realized that we should take into account whether our model is assessing certain ethnic foods differently than the rest of the data. We took a few subsets of data for recipes that contained "chinese", "african", "indian", etc. to test our model on.
+
+
+
+
+<br><br>
+<img width="866" alt="Screenshot 2024-12-10 at 1 45 46 PM" src="https://github.com/user-attachments/assets/a2cc77d0-a8c1-4cd0-80f8-ec3dcc6cd841">
+
+<br><br>
+This plot shows that the distribution of predictions for ethnic food does not differ from our predictions from the dataset as a whole.
